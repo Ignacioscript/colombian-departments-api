@@ -20,8 +20,8 @@ return new class extends Migration
             $table->unsignedMediumInteger('population');
             $table->timestamps();
 
-            $table->unique('name');
-            $table->unique('department_id', 'name');
+            // A city name should only be unique within its department.
+            $table->unique(['department_id', 'name']);
             $table->index('department_id');
             $table->index('name');
         });

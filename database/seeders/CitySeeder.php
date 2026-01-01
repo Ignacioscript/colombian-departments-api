@@ -15,6 +15,6 @@ class CitySeeder extends Seeder
     {
         $cities = include database_path('seeders/data/cities_list.php');
 
-        DB::table('cities')->insert($cities);
+        DB::table('cities')->upsert($cities, ['department_id', 'name'], ['is_capital', 'population']);
     }
 }

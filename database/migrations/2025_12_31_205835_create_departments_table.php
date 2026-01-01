@@ -20,10 +20,10 @@ return new class extends Migration
             $table->unsignedMediumInteger('population')->nullable();
             $table->string('region');
             $table->string('capital');
-            $table->string('code', 3);
+            $table->string('code', 3)->unique();
             $table->timestamps();
 
-            $table->index('name');
+            $table->index(['name', 'code'], 'departments_name_code_index');
             $table->index('slug');
         });
     }
