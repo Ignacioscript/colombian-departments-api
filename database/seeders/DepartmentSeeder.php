@@ -15,7 +15,7 @@ class DepartmentSeeder extends Seeder
     {
         $departments = include database_path('seeders/data/departments_list.php');
 
-
-        DB::table('departments')->insert($departments);
+                                                //array of departments, array of unique, columns to update
+        DB::table('departments')->upsert($departments, ['name'], ['slug', 'is_capital', 'extension', 'population', 'region', 'capital', 'code']);
     }
 }
